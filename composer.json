@@ -27,7 +27,7 @@
 	},
     "autoload": {
         "psr-4": {
-            "AvaiBookSports\\Redsys\\Messages\\": "src"
+            "AvaiBookSports\\Component\\Redsys\\Messages\\": "src"
         }
 	},
     "require-dev": {
