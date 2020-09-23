@@ -1,9 +1,18 @@
 {
-    "name": "redsys/messages",
-    "keywords": ["tpv", "redsys", "sermepa", "servired", "messages"],
-    "description": "Redsys/Sermepa/Servired TPV Messages lists",
+    "name": "avaibooksports/redsys-messages",
+    "keywords": ["tpv", "gateway", "redsys", "sermepa", "servired", "messages"],
+    "description": "Redsys/Sermepa/Servired gateway message lists",
     "license": "MIT",
     "authors": [
+        {
+            "name": "AvaiBook Sports",
+            "email": "desarrollo@avaibooksports.com",
+            "homepage": "https://www.avaibooksports.com"
+        },
+        {
+            "name": "Pablo Largo",
+            "email": "devnix.code@gmail.com"
+        },
         {
             "name": "Lito",
             "email": "lito@eordes.com"
@@ -11,12 +20,18 @@
     ],
     "require": {
         "php": ">=5.3"
-    },
+	},
+	"suggest": {
+		"league/omnipay": "A payment processing library compatible with multiple payment gateways",
+		"avaibooksports/omnipay-redsys": "An Omnipay driver implementing this library"
+	},
     "autoload": {
         "psr-4": {
-            "Redsys\\Messages\\": "./"
+            "AvaiBookSports\\Redsys\\Messages\\": "src"
         }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+	},
+    "require-dev": {
+        "phpunit/phpunit": "^9.3",
+        "vimeo/psalm": "^3.16"
+    }
 }

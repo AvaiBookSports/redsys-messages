@@ -13,8 +13,6 @@ Los ficheros de `Messages` contienen:
 ## Uso:
 
 ```php
-include ('/path/to/redsys-Messages/autoload.php');
-
 use Redsys\Messages\Messages;
 
 $all = Messages::getAll(); // Devuelve todos los mensajes
