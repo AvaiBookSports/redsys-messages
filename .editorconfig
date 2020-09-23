@@ -19,6 +19,6 @@ indent_size = 4
 [composer.json]
 indent_style = tab
 
-[.github/**.yml]
+[.github/**.yaml]
 indent_style = space
 indent_size = 2
