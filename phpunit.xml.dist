@@ -6,7 +6,8 @@
     colors                      = "true"
     convertErrorsToExceptions   = "true"
     convertNoticesToExceptions  = "true"
-    convertWarningsToExceptions = "true">
+    convertWarningsToExceptions = "true"
+    bootstrap                   ="vendor/autoload.php">
     <testsuites>
         <testsuite name="Project Test Suite">
             <directory>tests</directory>

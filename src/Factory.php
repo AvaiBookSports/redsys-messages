@@ -18,19 +18,26 @@ class Factory
         $this->setLoader($loader);
     }
 
-    public function setLoader(CatalogLoaderInterface $loader)
+    /**
+     * @return self
+     */
+    final public function setLoader(CatalogLoaderInterface $loader)
     {
-        $this->checkCatalogs($loader->getCatalogs());
+        $this->assertCatalogs($loader->getCatalogs());
 
         $this->loader = $loader;
+
+        return $this;
     }
 
     /**
      * @param string[] $catalogs
      *
+     * @return self
+     *
      * @throws RuntimeException if a catalog is not found or doesn't implement CatalogInterface
      */
-    private function checkCatalogs(array $catalogs)
+    private function assertCatalogs(array $catalogs)
     {
         foreach ($catalogs as $catalog) {
             if (!class_exists($catalog)) {
@@ -41,14 +48,18 @@ class Factory
                 throw new RuntimeException(sprintf('Class "%s" must implement %s', $catalog, CatalogInterface::class));
             }
         }
+
+        return $this;
     }
 
     /**
      * Get a message catalog by language. Accepts ISO 639-1 and ISO 639-2 codes.
      *
+     * @param string $language
+     *
      * @return CatalogInterface
      */
-    public function createCatalogByLanguage(string $language)
+    public function createCatalogByLanguage($language)
     {
         foreach ($this->loader->getCatalogs() as $catalog) {
             if ($catalog::getIso639Alpha2() === $language || $catalog::getIso639Alpha3() === $language) {

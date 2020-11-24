@@ -1,38 +1,43 @@
 {
-    "name": "avaibooksports/redsys-messages",
-    "keywords": ["tpv", "gateway", "redsys", "sermepa", "servired", "messages"],
-    "description": "Redsys/Sermepa/Servired gateway message lists",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "AvaiBook Sports",
-            "email": "desarrollo@avaibooksports.com",
-            "homepage": "https://www.avaibooksports.com"
-        },
-        {
-            "name": "Pablo Largo",
-            "email": "devnix.code@gmail.com"
-        },
-        {
-            "name": "Lito",
-            "email": "lito@eordes.com"
-        }
-    ],
-    "require": {
-        "php": ">=5.3"
+	"name": "avaibooksports/redsys-messages",
+	"keywords": ["tpv", "gateway", "redsys", "sermepa", "servired", "messages"],
+	"description": "Redsys/Sermepa/Servired gateway message lists",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "AvaiBook Sports",
+			"email": "desarrollo@avaibooksports.com",
+			"homepage": "https://www.avaibooksports.com"
+		},
+		{
+			"name": "Pablo Largo",
+			"email": "devnix.code@gmail.com"
+		},
+		{
+			"name": "Lito",
+			"email": "lito@eordes.com"
+		}
+	],
+	"require": {
+		"php": ">=5.6"
 	},
 	"suggest": {
 		"league/omnipay": "A payment processing library compatible with multiple payment gateways",
-		"avaibooksports/omnipay-redsys": "An Omnipay driver for Redsys"
+		"avaibooksports/omnipay-redsys": "An Omnipay driver for Redsys",
+		"vimeo/psalm": "If you are going to contribute to this package"
 	},
-    "autoload": {
-        "psr-4": {
-            "AvaiBookSports\\Component\\RedsysMessages\\": "src"
-        }
+	"autoload": {
+		"psr-4": {
+			"AvaiBookSports\\Component\\RedsysMessages\\": "src/"
+		}
 	},
-    "require-dev": {
-        "phpunit/phpunit": "^8.5",
-        "vimeo/psalm": "^3.16",
-        "friendsofphp/php-cs-fixer": "^2.16"
-    }
+	"autoload-dev": {
+		"psr-4": {
+			"AvaiBookSports\\Component\\RedsysMessages\\" : "tests/"
+		}
+	},
+	"require-dev": {
+		"symfony/phpunit-bridge": "^5.1",
+		"friendsofphp/php-cs-fixer": "^2.16"
+	}
 }

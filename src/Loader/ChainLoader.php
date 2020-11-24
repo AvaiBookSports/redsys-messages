@@ -22,9 +22,14 @@ class ChainLoader implements CatalogLoaderInterface
         }
     }
 
+    /**
+     * @return self
+     */
     public function addLoader(CatalogLoaderInterface $loader)
     {
         $this->loader[] = $loader;
+
+        return $this;
     }
 
     /**

@@ -15,7 +15,9 @@ interface CatalogInterface
     public static function getIso639Alpha3();
 
     /**
+     * @param string $code
+     *
      * @return string|null Friendly error message for the customer or null if not found
      */
-    public function getDsResponseMessage(string $code);
+    public function getDsResponseMessage($code);
 }

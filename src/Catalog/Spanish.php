@@ -7,7 +7,7 @@ use AvaiBookSports\Component\RedsysMessages\CatalogInterface;
 class Spanish implements CatalogInterface
 {
     /**
-     * @var array
+     * @var string[]
      */
     private $dsResponseMessages = [
         '0101' => 'Tarjeta caducada',
@@ -63,7 +63,7 @@ class Spanish implements CatalogInterface
     /**
      * {@inheritdoc}
      */
-    public function getDsResponseMessage(string $code)
+    public function getDsResponseMessage($code)
     {
         if (array_key_exists($code, $this->dsResponseMessages)) {
             return $this->dsResponseMessages[$code];
