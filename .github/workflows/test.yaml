@@ -13,6 +13,12 @@ jobs:
     strategy:
       matrix:
         php-version:
+          - '5.3'
+          - '5.4'
+          - '5.5'
+          - '5.6'
+          - '7.0'
+          - '7.1'
           - '7.2'
           - '7.3'
           - '7.4'
@@ -20,14 +26,38 @@ jobs:
         allowed_to_fail: [false]
         variant: [normal]
         include:
+          - php-version: '5.3'
+            dependencies: lowest
+            allowed_to_fail: false
+            variant: normal
+          - php-version: '5.4'
+            dependencies: lowest
+            allowed_to_fail: false
+            variant: normal
+          - php-version: '5.5'
+            dependencies: lowest
+            allowed_to_fail: false
+            variant: normal
+          - php-version: '5.6'
+            dependencies: lowest
+            allowed_to_fail: false
+            variant: normal
+          - php-version: '7.0'
+            dependencies: lowest
+            allowed_to_fail: false
+            variant: normal
+          - php-version: '7.1'
+            dependencies: lowest
+            allowed_to_fail: false
+            variant: normal
           - php-version: '7.2'
             dependencies: lowest
             allowed_to_fail: false
             variant: normal
-          - php-version: '7.4'
+          - php-version: '7.3'
             dependencies: highest
             allowed_to_fail: false
-          - php-version: '7.3'
+          - php-version: '7.4'
             dependencies: highest
             allowed_to_fail: false
 
