@@ -31,11 +31,6 @@
 			"AvaiBookSports\\Component\\RedsysMessages\\": "src/"
 		}
 	},
-	"autoload-dev": {
-		"psr-4": {
-			"AvaiBookSports\\Component\\RedsysMessages\\" : "tests/"
-		}
-	},
 	"require-dev": {
 		"symfony/phpunit-bridge": "^5.1",
 		"friendsofphp/php-cs-fixer": "^2.16"
