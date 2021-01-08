@@ -2,9 +2,10 @@
 
 namespace AvaiBookSports\Component\RedsysMessages\Catalog;
 
+use AvaiBookSports\Component\RedsysMessages\AbstractCatalog;
 use AvaiBookSports\Component\RedsysMessages\CatalogInterface;
 
-class English implements CatalogInterface
+class English extends AbstractCatalog
 {
     /**
      * @var string[]
@@ -45,6 +46,11 @@ class English implements CatalogInterface
     ];
 
     /**
+     * @var string[]
+     */
+    private $errorMessages = [];
+
+    /**
      * {@inheritdoc}
      */
     public static function getIso639Alpha2()
@@ -67,6 +73,22 @@ class English implements CatalogInterface
     {
         if (array_key_exists($code, $this->dsResponseMessages)) {
             return $this->dsResponseMessages[$code];
+        }
+
+        return null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getErrorMessage($code)
+    {
+        if (array_key_exists($code, CatalogInterface::SIS_ERRORS)) {
+            $this->getErrorMessage(CatalogInterface::SIS_ERRORS[$code]);
+        }
+
+        if (array_key_exists($code, $this->errorMessages)) {
+            return $this->errorMessages[$code];
         }
 
         return null;

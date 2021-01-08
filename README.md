@@ -23,6 +23,10 @@ $redsysMessages->createCatalogByLanguage('en')->getDsResponseMessage('0101');
 
 // You can load catalogs by ISO 639-1 and ISO 639-2
 $redsysMessages->createCatalogByLanguage('eng')->getDsResponseMessage('0101');
+
+// There is a different library for error messages. Those error codes can be provided by Redsys in two different formats:
+$redsysMessages->createCatalogByLanguage('en')->getErrorMessage('9002'));
+$redsysMessages->createCatalogByLanguage('en')->getErrorMessage('SIS0002')); // Alias of '9002'
 ```
 
 ### Creating and loading custom catalogs

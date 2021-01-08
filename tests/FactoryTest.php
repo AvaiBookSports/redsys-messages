@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class FactoryTest extends TestCase
 {
-    public function testCatalogLoader()
+    public function testDsResponseMessage()
     {
         $loader = new Factory(new CatalogLoader());
 
@@ -17,6 +17,16 @@ final class FactoryTest extends TestCase
         $this->assertEquals('Expired card', $loader->createCatalogByLanguage('eng')->getDsResponseMessage('0101'));
         $this->assertEquals('Tarjeta caducada', $loader->createCatalogByLanguage('es')->getDsResponseMessage('0101'));
         $this->assertEquals('Tarjeta caducada', $loader->createCatalogByLanguage('spa')->getDsResponseMessage('0101'));
+    }
+
+    public function testErrorMessage()
+    {
+        $loader = new Factory(new CatalogLoader());
+
+        $this->assertEquals('Error genérico', $loader->createCatalogByLanguage('es')->getErrorMessage('9002'));
+        $this->assertEquals('Error genérico', $loader->createCatalogByLanguage('es')->getErrorMessage('SIS0002'));
+        $this->assertEquals('Nos llega un tipo de operación errónea', $loader->createCatalogByLanguage('es')->getErrorMessage('9030'));
+        $this->assertEquals('Nos llega un tipo de operación errónea', $loader->createCatalogByLanguage('es')->getErrorMessage('SIS0030'));
     }
 
     public function testNonExistingLanguage()
