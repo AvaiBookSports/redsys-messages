@@ -4,7 +4,7 @@ namespace AvaiBookSports\Component\RedsysMessages;
 
 interface CatalogInterface
 {
-    public const SIS_ERRORS = [
+    const SIS_ERRORS = [
         'SIS0001' => '9001',
         'SIS0002' => '9002',
         'SIS0003' => '9003',
