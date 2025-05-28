@@ -16,7 +16,7 @@ class CatalogLoader implements CatalogLoaderInterface
         return [
             Spanish::class,
             English::class,
-            Italian::class
+            Italian::class,
         ];
     }
 }
