@@ -1,5 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
+namespace AvaiBookSports\Component\RedsysMessages\Tests;
+
 use AvaiBookSports\Component\RedsysMessages\Exception\CatalogNotFoundException;
 use AvaiBookSports\Component\RedsysMessages\Exception\RuntimeException;
 use AvaiBookSports\Component\RedsysMessages\Factory;
@@ -9,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 final class FactoryTest extends TestCase
 {
-    public function testDsResponseMessage()
+    public function testDsResponseMessage(): void
     {
         $loader = new Factory(new CatalogLoader());
 
@@ -19,7 +23,7 @@ final class FactoryTest extends TestCase
         $this->assertEquals('Tarjeta caducada', $loader->createCatalogByLanguage('spa')->getDsResponseMessage('0101'));
     }
 
-    public function testErrorMessage()
+    public function testErrorMessage(): void
     {
         $loader = new Factory(new CatalogLoader());
 
@@ -29,7 +33,7 @@ final class FactoryTest extends TestCase
         $this->assertEquals('Nos llega un tipo de operación errónea', $loader->createCatalogByLanguage('es')->getErrorMessage('SIS0030'));
     }
 
-    public function testNonExistingLanguage()
+    public function testNonExistingLanguage(): void
     {
         $loader = new Factory(new CatalogLoader());
 
@@ -37,10 +41,11 @@ final class FactoryTest extends TestCase
         $loader->createCatalogByLanguage('foo');
     }
 
-    public function testNonExistingCatalog()
+    public function testNonExistingCatalog(): void
     {
         $this->expectException(RuntimeException::class);
 
+        /** @phpstan-ignore argument.type */
         $loader = new Factory(new ArrayLoader([
             'test',
         ]));
@@ -48,10 +53,11 @@ final class FactoryTest extends TestCase
         $loader->createCatalogByLanguage('es');
     }
 
-    public function testIncompatibleCatalog()
+    public function testIncompatibleCatalog(): void
     {
         $this->expectException(RuntimeException::class);
 
+        /** @phpstan-ignore argument.type */
         $loader = new Factory(new ArrayLoader([
             'stdClass',
         ]));

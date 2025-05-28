@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AvaiBookSports\Component\RedsysMessages;
 
 use AvaiBookSports\Component\RedsysMessages\Exception\CatalogNotFoundException;
