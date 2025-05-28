@@ -4,84 +4,22 @@ on: [push, pull_request]
 
 jobs:
   test:
-    name: PHP ${{ matrix.php-version }} + ${{ matrix.dependencies }} + ${{ matrix.variant }}
-
+    name: PHP ${{ matrix.php-version }}
     runs-on: ubuntu-latest
-
-    continue-on-error: ${{ matrix.allowed_to_fail }}
-
     strategy:
       matrix:
         php-version:
-          - '5.6'
-          - '7.0'
-          - '7.1'
-          - '7.2'
-          - '7.3'
+          - '8.4'
+          - '8.3'
+          - '8.2'
+          - '8.1'
+          - '8.0'
           - '7.4'
-        dependencies: [highest]
-        allowed_to_fail: [false]
-        variant: [normal]
-        include:
-          - php-version: '5.6'
-            dependencies: lowest
-            allowed_to_fail: false
-            variant: normal
-          - php-version: '7.0'
-            dependencies: lowest
-            allowed_to_fail: false
-            variant: normal
-          - php-version: '7.1'
-            dependencies: lowest
-            allowed_to_fail: false
-            variant: normal
-          - php-version: '7.2'
-            dependencies: lowest
-            allowed_to_fail: false
-            variant: normal
-          - php-version: '7.3'
-            dependencies: highest
-            allowed_to_fail: false
-          - php-version: '7.4'
-            dependencies: highest
-            allowed_to_fail: false
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Install PHP with extensions
-        uses: shivammathur/setup-php@v2
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
-          coverage: pcov
-          tools: composer:v2
-
-      - name: Add PHPUnit matcher
-        run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
-
-      - name: Set Composer cache directory
-        id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-
-      - name: Cache Composer
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ matrix.variant }}
-          restore-keys: ${{ runner.os }}-${{ matrix.php-version }}-composer-
-
-      - name: Install variant
-        if: matrix.variant != 'normal'
-        run: composer require ${{ matrix.variant }} --no-update
-
-      - name: Install Composer dependencies (lowest)
-        if: matrix.dependencies == 'lowest'
-        run: composer update --prefer-dist --no-progress --no-interaction --prefer-stable --prefer-lowest
-
-      - name: Install Composer dependencies (highest)
-        if: matrix.dependencies == 'highest'
-        run: composer update --prefer-dist --no-progress --no-interaction --prefer-stable
-
-      - name: Run Tests
-        run: vendor/bin/simple-phpunit
+          coverage: xdebug
+      - run: composer install
+      - run: vendor/bin/phpunit --coverage-text

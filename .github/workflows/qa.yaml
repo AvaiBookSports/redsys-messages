@@ -4,12 +4,20 @@ on: [push, pull_request]
 
 jobs:
   php-cs-fixer:
-    name: PHP-CS-Fixer
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: PHP-CS-Fixer
-      uses: docker://oskarstark/php-cs-fixer-ga
-      with:
-        entrypoint: "/entrypoint.sh"
-        args: --diff --dry-run
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+      - run: composer install
+      - run: vendor/bin/php-cs-fixer fix --diff --dry-run
+  phpstan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.4
+      - run: composer install
+      - run: vendor/bin/phpstan

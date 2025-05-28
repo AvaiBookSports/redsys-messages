@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AvaiBookSports\Component\RedsysMessages;
 
 interface CatalogInterface
@@ -206,7 +208,7 @@ interface CatalogInterface
         'SIS0270' => '9270',
         'SIS0274' => '9274',
         'SIS0275' => '9275',
-        'SIS076' => '9276',
+        'SIS0276' => '9276',
         'SIS0277' => '9277',
         'SIS0278' => '9278',
         'SIS0279' => '9279',
@@ -256,44 +258,6 @@ interface CatalogInterface
         'SIS0332' => '9332',
         'SIS0333' => '9333',
         'SIS0334' => '9334',
-        'SIS0335' => '9335',
-        'SIS0336' => '9336',
-        'SIS0337' => '9337',
-        'SIS0338' => '9338',
-        'SIS0339' => '9339',
-        'SIS0340' => '9340',
-        'SIS0341' => '9341',
-        'SIS0342' => '9342',
-        'SIS0343' => '9343',
-        'SIS0344' => '9344',
-        'SIS0345' => '9345',
-        'SIS0346' => '9346',
-        'SIS0347' => '9347',
-        'SIS0348' => '9348',
-        'SIS0349' => '9349',
-        'SIS0350' => '9350',
-        'SIS0351' => '9351',
-        'SIS0352' => '9352',
-        'SIS0353' => '9353',
-        'SIS0354' => '9354',
-        'SIS0355' => '9355',
-        'SIS0356' => '9356',
-        'SIS0357' => '9357',
-        'SIS0358' => '9358',
-        'SIS0370' => '9370',
-        'SIS0371' => '9371',
-        'SIS0372' => '9372',
-        'SIS0373' => '9373',
-        'SIS0374' => '9374',
-        'SIS0375' => '9375',
-        'SIS0376' => '9376',
-        'SIS0377' => '9377',
-        'SIS0378' => '9378',
-        'SIS0379' => '9379',
-        'SIS080' => '9380',
-        'SIS081' => '9381',
-        'SIS082' => '9382',
-        'SIS0334' => '9283',
         'SIS0335' => '9335',
         'SIS0336' => '9336',
         'SIS0337' => '9337',
@@ -663,24 +627,20 @@ interface CatalogInterface
     /**
      * @return string 2 letter language ISO code
      */
-    public static function getIso639Alpha2();
+    public static function getIso639Alpha2(): string;
 
     /**
      * @return string 3 letter language ISO code
      */
-    public static function getIso639Alpha3();
+    public static function getIso639Alpha3(): string;
 
     /**
-     * @param string $code
-     *
      * @return string|null Friendly message for the customer or null if not found
      */
-    public function getDsResponseMessage($code);
+    public function getDsResponseMessage(string $code): ?string;
 
     /**
-     * @param string $code
-     *
      * @return string|null Friendly error message for the customer or null if not found
      */
-    public function getErrorMessage($code);
+    public function getErrorMessage(string $code): ?string;
 }

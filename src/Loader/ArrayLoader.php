@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AvaiBookSports\Component\RedsysMessages\Loader;
 
 use AvaiBookSports\Component\RedsysMessages\CatalogInterface;
@@ -38,9 +40,6 @@ class ArrayLoader implements CatalogLoaderInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getCatalogs()
     {
         return $this->catalogs;

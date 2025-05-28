@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AvaiBookSports\Component\RedsysMessages\Loader;
 
 use AvaiBookSports\Component\RedsysMessages\CatalogInterface;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AvaiBookSports\Component\RedsysMessages\Loader;
 
 class ChainLoader implements CatalogLoaderInterface
@@ -40,9 +42,6 @@ class ChainLoader implements CatalogLoaderInterface
         return $this->loader;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getCatalogs()
     {
         $catalogs = [];

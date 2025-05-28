@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AvaiBookSports\Component\RedsysMessages\Catalog;
 
 use AvaiBookSports\Component\RedsysMessages\AbstractCatalog;
@@ -50,26 +52,17 @@ class English extends AbstractCatalog
      */
     private $errorMessages = [];
 
-    /**
-     * {@inheritdoc}
-     */
-    public static function getIso639Alpha2()
+    public static function getIso639Alpha2(): string
     {
         return 'en';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public static function getIso639Alpha3()
+    public static function getIso639Alpha3(): string
     {
         return 'eng';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getDsResponseMessage($code)
+    public function getDsResponseMessage(string $code): ?string
     {
         if (array_key_exists($code, $this->dsResponseMessages)) {
             return $this->dsResponseMessages[$code];
@@ -78,10 +71,7 @@ class English extends AbstractCatalog
         return null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getErrorMessage($code)
+    public function getErrorMessage(string $code): ?string
     {
         if (array_key_exists($code, CatalogInterface::SIS_ERRORS)) {
             $this->getErrorMessage(CatalogInterface::SIS_ERRORS[$code]);

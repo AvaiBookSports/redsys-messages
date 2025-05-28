@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AvaiBookSports\Component\RedsysMessages\Catalog;
 
 use AvaiBookSports\Component\RedsysMessages\AbstractCatalog;
@@ -666,26 +668,17 @@ class Spanish extends AbstractCatalog
         '9999' => 'Operación que ha sido redirigida al emisor a autenticar',
     ];
 
-    /**
-     * {@inheritdoc}
-     */
-    public static function getIso639Alpha2()
+    public static function getIso639Alpha2(): string
     {
         return 'es';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public static function getIso639Alpha3()
+    public static function getIso639Alpha3(): string
     {
         return 'spa';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getDsResponseMessage($code)
+    public function getDsResponseMessage(string $code): ?string
     {
         if (array_key_exists($code, $this->dsResponseMessages)) {
             return $this->dsResponseMessages[$code];
@@ -694,10 +687,7 @@ class Spanish extends AbstractCatalog
         return null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getErrorMessage($code)
+    public function getErrorMessage(string $code): ?string
     {
         if (array_key_exists($code, CatalogInterface::SIS_ERRORS)) {
             return $this->getErrorMessage(CatalogInterface::SIS_ERRORS[$code]);
