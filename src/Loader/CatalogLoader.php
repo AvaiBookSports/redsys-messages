@@ -3,6 +3,7 @@
 namespace AvaiBookSports\Component\RedsysMessages\Loader;
 
 use AvaiBookSports\Component\RedsysMessages\Catalog\English;
+use AvaiBookSports\Component\RedsysMessages\Catalog\Italian;
 use AvaiBookSports\Component\RedsysMessages\Catalog\Spanish;
 
 class CatalogLoader implements CatalogLoaderInterface
@@ -15,6 +16,7 @@ class CatalogLoader implements CatalogLoaderInterface
         return [
             Spanish::class,
             English::class,
+            Italian::class
         ];
     }
 }
